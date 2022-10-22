@@ -68,7 +68,7 @@ type discordEmbedField struct {
 	Value string `json:"value"`
 }
 
-const defaultListenAddress = "127.0.0.1:9094"
+const defaultListenAddress = "127.0.0.1:8080"
 
 var (
 	whURL         = flag.String("webhook.url", os.Getenv("DISCORD_WEBHOOK"), "Discord WebHook URL.")

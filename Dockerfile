@@ -4,9 +4,8 @@
 FROM golang:alpine as builder
 # Install SSL ca certificates
 RUN apk update && apk add git && apk add ca-certificates
-# Create appuser
-RUN adduser -D -g '' appuser
-COPY . $GOPATH/src/mypackage/myapp/
+#
+COPY ./source $GOPATH/src/mypackage/myapp/
 WORKDIR $GOPATH/src/mypackage/myapp/
 #get dependancies
 RUN go get -d -v
@@ -22,7 +21,7 @@ COPY --from=builder /etc/passwd /etc/passwd
 # Copy our static executable
 COPY --from=builder /go/bin/alertmanager-discord /go/bin/alertmanager-discord
 
-ENV LISTEN_ADDRESS=0.0.0.0:9094
-EXPOSE 9094
-USER appuser
+ENV LISTEN_ADDRESS=0.0.0.0:8080
+EXPOSE 8080
+USER 1001
 ENTRYPOINT ["/go/bin/alertmanager-discord"]

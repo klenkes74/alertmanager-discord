@@ -1,0 +1,17 @@
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ include "alertmanager-discord.fullname" . }}
+  labels:
+    {{- include "alertmanager-discord.labels" . | nindent 4 }}
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              {{ .Values.networkpolicy.label }}
+  policyTypes:
+    - Ingress
+status: {}
