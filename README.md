@@ -54,6 +54,12 @@ receivers:
   - url: 'http://localhost:9094'
 ```
 
-## Docker
+## CRI-O
 
-If you run a fancy docker/k8s infra, you can find the docker hub repo here: https://hub.docker.com/r/benjojo/alertmanager-discord/
+The repo contains a helm chart accessing the container image at https://quay.io/klenkes74/alertmanager-discord.
+The only parameter to be set is `discord.webhook` which contains the configured web hook for your discord channel.
+For the default installation you may run a single alertmanager-discord or you seperate the channels by your own criteria (normaly severity) by running the helm chart multiple times for every single channel you want to fill with alerts.
+
+## Thanks
+
+Thanks to benjojo at github.com for the alert manager discord webhook itself. I only added the helm chart and a little change to the repo structure. The original can be found on https://github.com/benjojo/alertmanager-discord.
