@@ -17,7 +17,7 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
       labels:
-        {{- include "alertmanager-discord.selectorLabels" . | nindent 8 }}
+        {{- include "alertmanager-discord.labels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

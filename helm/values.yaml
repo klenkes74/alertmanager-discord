@@ -22,7 +22,8 @@ serviceAccount:
   annotations: {}
   name: ""
 
-podAnnotations: {}
+podAnnotations:
+  k8s-ttl-controller.twin.sh/ttl: "24h"
 
 podSecurityContext: {}
   # fsGroup: 2000
