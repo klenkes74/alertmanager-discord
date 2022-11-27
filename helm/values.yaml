@@ -7,6 +7,11 @@ replicaCount: 3
 discord:
   webhook: URL-FROM-DISCORD
 
+sealedSecrets:
+  enable: false
+  namespace: kube-system
+
+
 image:
   repository: quay.io/klenkes74/alertmanager-discord
   pullPolicy: IfNotPresent
